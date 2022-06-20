@@ -39,7 +39,7 @@ Hints (Useful Resources):
             + **After:**
                ```
                   <ListItemButton component="a" href="#simple-list">
-                    <ListItemText primary={todo.content}/>
+                    <ListItemText primary={todo.content} secondary={todo.date}/>
                   </ListItemButton>
                 ```
         3. Within the ListItemText component, add the `secondary` property next to the `primary` property to display the date for each task

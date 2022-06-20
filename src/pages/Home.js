@@ -13,6 +13,14 @@ class Home extends Component {
   }
   // the addTodo function simply creates a new array that includes the user submitted todo item and then
   // updates the state with the new list.
+  deleteTodo = (id) => {
+    const todos = this.state.todos.filter((todo) => {
+      return todo.id !== id;
+    });
+    this.setState({
+      todos: todos,
+    });
+  };  
   addTodo = (todo) => {
     // In React, keys or ids in a list help identify which items have changed, been added or removed. Keys
     // should not share duplicate values.
@@ -21,12 +29,16 @@ class Home extends Component {
     // dealing with a larger data sensitive project.
     todo.id = Math.random();
     // Create a array that contains the current array and the new todo item
-    let new_list = [...this.state.todos, todo];
+    new_list = [...this.state.todos, todo];
     // Update the local state with the new array.
     this.setState({
-      todos: new_list,
+      if (_new_list.includes(todo)) {
+        new_list = this.state.todo;
+      } else {
+        todos: new_list
+      }
     });
-  };
+
   render() {
     return (
       <div className="Home">
@@ -36,7 +48,7 @@ class Home extends Component {
         <AddTodo addTodo={this.addTodo} />
         {/* When returning the Todos component, todos is a prop passed to the todos.js file
          to format and render the current todo list state */}
-        <Todos todos={this.state.todos} />
+        <Todos deleteTodo={this.deleteTodo} todos={this.state.todos} />
       </div>
     );
   }
